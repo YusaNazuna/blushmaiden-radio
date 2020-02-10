@@ -47,14 +47,13 @@ export default class GameManager {
   public static start(params: { width: number; height: number }): void {
     const options = {
       ...params,
-      backgroundColor: 0x334fc1,
+      backgroundColor: 0xffffff,
       antialias: true
     };
     const game = new PIXI.Application(options);
     game.loader.baseUrl = "assets/";
     const instance = new GameManager(game);
     GameManager.instance = instance;
-
     document.body.appendChild(game.view);
 
     game.ticker.add((delta: number) => {

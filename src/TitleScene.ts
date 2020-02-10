@@ -1,18 +1,19 @@
 import * as PIXI from "pixi.js";
 import GameManager from "./GameManager";
 import Scene from "./Scene";
-import FirstScene from "./FirstScene";
 import Resource from "Resource";
 import LoaderAddParam from "./LoaderAddParam";
 
 export default class TitleScene extends Scene {
   private game: PIXI.Application = GameManager.instance.game;
+  private container: PIXI.Container = new PIXI.Container();
 
   /**
    * コンストラクタ
    */
   constructor() {
     super();
+    this.addChild(this.container);
   }
 
   /**
@@ -26,7 +27,7 @@ export default class TitleScene extends Scene {
    * 次のシーンへの遷移
    */
   public nextScene(): void {
-    GameManager.loadScene(new FirstScene());
+    GameManager.loadScene(new TitleScene());
   }
 
   /**
@@ -34,18 +35,22 @@ export default class TitleScene extends Scene {
    */
   protected onLoadedRenderer(): void {
     const renderer = GameManager.instance.game.renderer;
-    let id = this.game.loader.resources[Resource.Static.Sofia].textures;
-    let sprite = new PIXI.Sprite(id["sofia-003.png"]);
+    const title = this.game.loader.resources[Resource.Static.Title].texture;
+    const sprite = new PIXI.Sprite(title);
+
+    sprite.width = renderer.width;
+    sprite.height = renderer.height;
+
     sprite.interactive = true;
     sprite.buttonMode = true;
     sprite.on("pointerdown", this.nextScene);
-    this.addChild(sprite);
+    this.container.addChild(sprite);
   }
 
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     const staticResource = Resource.Static;
-    assets = assets.concat(staticResource.Sofia);
+    assets = assets.concat(staticResource.Title);
     return assets;
   }
 }

@@ -10,7 +10,7 @@
     // pixi.jsのモジュール見つからないエラーを回避できる
     "moduleResolution": "Node",
     // "strict": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
     "noUnusedLocals": false,

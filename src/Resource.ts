@@ -5,7 +5,7 @@ import * as PIXI from "pixi.js";
  */
 const Resource = Object.freeze({
   Static: {
-    Sofia: "sofia.json"
+    Title: "bg/title.png"
   }
 });
 
