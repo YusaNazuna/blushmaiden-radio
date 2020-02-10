@@ -3,16 +3,20 @@ import GameManager from "./GameManager";
 import Scene from "./Scene";
 import Resource from "Resource";
 import LoaderAddParam from "./LoaderAddParam";
+import Particle from "Particle";
 
 export default class TitleScene extends Scene {
   private game: PIXI.Application = GameManager.instance.game;
   private container: PIXI.Container = new PIXI.Container();
+  private particle: Particle;
 
   /**
    * コンストラクタ
    */
   constructor() {
     super();
+    this.particle = new Particle(960, 500, 100);
+    this.addChild(this.particle.container);
     this.addChild(this.container);
   }
 
@@ -21,6 +25,7 @@ export default class TitleScene extends Scene {
    */
   public update(dt: number): void {
     super.update(dt);
+    this.particle.update(dt);
   }
 
   /**
