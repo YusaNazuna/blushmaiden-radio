@@ -57,20 +57,12 @@ export default class TitleScene extends Scene {
     sprite.buttonMode = true;
     sprite.on("pointerdown", this.nextScene);
     this.container.addChild(sprite);
-
-    const bgmTitleName = Resource.Sound.Bgm.Title;
-    const resource = this.game.loader.resources[bgmTitleName] as any;
-    SoundManager.createSound(bgmTitleName, resource.buffer);
-    // 曲にアクセスする場合は、getSoundと曲名。操作できるパラメータはnew Sound参照
-    SoundManager.getSound(bgmTitleName).volume = 0;
-    this.playBgm(bgmTitleName);
   }
 
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     const staticResource = Resource.Static;
     assets = assets.concat(staticResource.Title);
-    assets = assets.concat(Resource.Sound.Bgm.Title);
     return assets;
   }
 }
