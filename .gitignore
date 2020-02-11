@@ -83,8 +83,7 @@ typings/
 dist
 public/*
 !public/index.html
-www/*
-!www/index.html
+www/assets/sound/*
 
 # Gatsby files
 .cache/
