@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
-import SoundManager from "SoundManager";
-import Scene from "./Scene";
+import SoundManager from "managers/SoundManager";
+import Scene from "scenes/Scene";
 
 export default class GameManager {
   /**

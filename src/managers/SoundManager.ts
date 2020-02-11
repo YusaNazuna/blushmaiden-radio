@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import { detect, BrowserInfo, BotInfo, NodeInfo } from "detect-browser";
-import GameManager from "GameManager";
+import GameManager from "managers/GameManager";
 import Sound from "Sound";
 
 /**

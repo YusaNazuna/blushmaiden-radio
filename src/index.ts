@@ -1,5 +1,5 @@
-import GameManager from "./GameManager";
-import TitleScene from "./TitleScene";
+import GameManager from "managers/GameManager";
+import TitleScene from "scenes/TitleScene";
 
 window.onload = () => {
   GameManager.start({

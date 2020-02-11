@@ -1,11 +1,10 @@
 import * as PIXI from "pixi.js";
-import GameManager from "./GameManager";
-import Scene from "./Scene";
+import GameManager from "managers/GameManager";
+import Scene from "scenes/Scene";
 import Resource from "Resource";
-import SoundManager from "SoundManager";
+import SoundManager from "managers/SoundManager";
 import LoaderAddParam from "./LoaderAddParam";
 import Particle from "Particle";
-import Sound from "Sound";
 
 export default class TitleScene extends Scene {
   private game: PIXI.Application = GameManager.instance.game;

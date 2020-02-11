@@ -2,9 +2,9 @@ import * as PIXI from "pixi.js";
 import Transition from "interfaces/Transition";
 import Immediate from "transition/Immediate";
 import Fade from "transition/Fade";
-import GameManager from "./GameManager";
+import GameManager from "managers/GameManager";
 import LoaderAddParam from "./LoaderAddParam";
-import SoundManager from "SoundManager";
+import SoundManager from "managers/SoundManager";
 
 /**
  * ゲームシーンの抽象クラス

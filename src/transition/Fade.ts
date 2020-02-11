@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 import Transition from "interfaces/Transition";
-import GameManager from "GameManager";
+import GameManager from "managers/GameManager";
 
 /**
  * トランジションのフェード表現

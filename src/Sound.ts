@@ -1,4 +1,4 @@
-import SoundManager from "SoundManager";
+import SoundManager from "managers/SoundManager";
 
 /**
  * サウンド処理を行うクラス
