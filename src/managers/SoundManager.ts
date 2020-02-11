@@ -34,7 +34,7 @@ export default class SoundManager {
   /**
    * SoundManager がサポートするサウンドファイル拡張子
    */
-  private static readonly supportedExtensions = ["mp3"];
+  private static readonly supportedExtensions = ["mp3", "wav"];
 
   /**
    * 一時停止中かどうかのフラグ

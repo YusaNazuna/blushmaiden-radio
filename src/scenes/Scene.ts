@@ -102,6 +102,7 @@ export default abstract class Scene extends PIXI.Container {
     const game = GameManager.instance.game;
     const assets = this.createInitialResourceList();
     const filteredAssets = this.filterLoadedAssets(assets);
+
     if (filteredAssets.length > 0) {
       // リソースの読込
       game.loader.add(filteredAssets).load(() => onLoaded());

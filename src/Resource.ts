@@ -9,8 +9,12 @@ const Resource = Object.freeze({
   },
   Sound: {
     Bgm: {
-      Title: "sound/Flingfish.mp3",
-      Scene1: "sound/夕焼けレモンティー.mp3"
+      Intro: "sound/Flingfish.mp3"
+    },
+    Voice: {
+      Yukari: {
+        Title: "sound/yukari/title/001_000_恥じらう乙女の.wav"
+      }
     }
   }
 });

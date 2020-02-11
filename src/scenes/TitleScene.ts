@@ -57,12 +57,22 @@ export default class TitleScene extends Scene {
     sprite.buttonMode = true;
     sprite.on("pointerdown", this.nextScene);
     this.container.addChild(sprite);
+
+    const voTitle = Resource.Sound.Voice.Yukari.Title;
+    const resource = this.game.loader.resources[voTitle] as any;
+    SoundManager.createSound(voTitle, resource.buffer);
+    // 曲にアクセスする場合は、getSoundと曲名。操作できるパラメータはnew Sound参照
+    SoundManager.getSound(voTitle).volume = 0.8;
+    setTimeout(() => {
+      this.playSe(voTitle);
+    }, 1000);
   }
 
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     const staticResource = Resource.Static;
     assets = assets.concat(staticResource.Title);
+    assets = assets.concat(Resource.Sound.Voice.Yukari.Title);
     return assets;
   }
 }

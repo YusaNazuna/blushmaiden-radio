@@ -5,11 +5,13 @@ import Resource from "Resource";
 import SoundManager from "managers/SoundManager";
 import LoaderAddParam from "./LoaderAddParam";
 import Fade from "transition/Fade";
+import Timeline from "Timeline";
 
 export default class IntroScene extends Scene {
   private game: PIXI.Application = GameManager.instance.game;
   private container: PIXI.Container = new PIXI.Container();
   private resources = GameManager.instance.game.loader.resources;
+  private timeline: Timeline;
 
   /**
    * コンストラクタ
@@ -26,6 +28,10 @@ export default class IntroScene extends Scene {
    */
   public update(dt: number): void {
     super.update(dt);
+    if (this.timeline) {
+      this.timeline.update(dt);
+      this.timeline.endUpdate(dt);
+    }
   }
 
   /**
@@ -37,20 +43,18 @@ export default class IntroScene extends Scene {
    * シーン描画
    */
   protected onLoadedRenderer(): void {
-    const renderer = GameManager.instance.game.renderer;
-    const title = this.resources[Resource.Static.Title].texture;
-    const sprite = new PIXI.Sprite(title);
-
-    sprite.width = renderer.width;
-    sprite.height = renderer.height;
-    this.container.addChild(sprite);
+    this.timeline = new Timeline();
+    this.timeline.timeLineSources1.push({ startFrame: 60, endFrame: 120, method: () => this.viewCharacter(), isReady: false, once: false });
+    this.timeline.start();
   }
 
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     const staticResource = Resource.Static;
     assets = assets.concat(staticResource.Title);
-    assets = assets.concat(Resource.Sound.Bgm.Title);
+    assets = assets.concat(Resource.Sound.Bgm.Intro);
     return assets;
   }
+
+  private viewCharacter(): void {}
 }
