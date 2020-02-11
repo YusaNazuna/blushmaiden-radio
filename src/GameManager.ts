@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import SoundManager from "SoundManager";
 import Scene from "./Scene";
 
 export default class GameManager {
@@ -54,12 +55,14 @@ export default class GameManager {
     game.loader.baseUrl = "assets/";
     const instance = new GameManager(game);
     GameManager.instance = instance;
+    SoundManager.init();
     document.body.appendChild(game.view);
 
     game.ticker.add((delta: number) => {
       if (instance.currentScene) {
         instance.currentScene.update(delta);
       }
+      SoundManager.update(delta);
     });
   }
 

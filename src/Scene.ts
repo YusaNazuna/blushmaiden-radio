@@ -4,6 +4,7 @@ import Immediate from "transition/Immediate";
 import Fade from "transition/Fade";
 import GameManager from "./GameManager";
 import LoaderAddParam from "./LoaderAddParam";
+import SoundManager from "SoundManager";
 
 /**
  * ゲームシーンの抽象クラス
@@ -132,4 +133,34 @@ export default abstract class Scene extends PIXI.Container {
    * シーン描画
    */
   protected onLoadedRenderer(): void {}
+
+  /**
+   * BGM をループ再生する
+   */
+  protected playBgm(soundName: string): void {
+    const bgm = SoundManager.getSound(soundName);
+    if (bgm) {
+      bgm.play(true);
+    }
+  }
+
+  /**
+   * BGM 再生を止める
+   */
+  protected stopBgm(soundName: string): void {
+    const bgm = SoundManager.getSound(soundName);
+    if (bgm) {
+      bgm.stop();
+    }
+  }
+
+  /**
+   * 効果音を再生する
+   */
+  protected playSe(soundName: string): void {
+    const se = SoundManager.getSound(soundName);
+    if (se) {
+      se.play();
+    }
+  }
 }
