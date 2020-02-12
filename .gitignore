@@ -83,8 +83,12 @@ typings/
 dist
 public/*
 !public/index.html
-www/assets/sound/*
 
+# www/assets/sound/*
+# www/assets/character/*
+www/assets/sound/*
+www/assets/character/yukari/*
+www/assets/character/maki/*
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
@@ -108,3 +112,5 @@ www/assets/sound/*
 
 # ts document
 docs/*
+
+!.gitkeep
