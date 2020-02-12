@@ -51,8 +51,16 @@ export default class IntroScene extends Scene {
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
     const staticResource = Resource.Static;
+    const characters = Resource.Character;
+
     assets = assets.concat(staticResource.Title);
-    assets = assets.concat(Resource.Sound.Bgm.Intro);
+    for (let key of Object.keys(characters)) {
+      const character = characters[key];
+      for (let i = 1; i <= character.len; i++) {
+        const num = new Intl.NumberFormat("ja", { minimumIntegerDigits: 2 }).format(i);
+        assets = assets.concat(`${character.path}/${num}.png`);
+      }
+    }
     return assets;
   }
 

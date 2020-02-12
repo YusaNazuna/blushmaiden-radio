@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import Scene from "scenes/Scene";
 
 /**
  * リソースの URL や命名規則のマスタ
@@ -6,6 +7,16 @@ import * as PIXI from "pixi.js";
 const Resource = Object.freeze({
   Static: {
     Title: "bg/title.png"
+  },
+  Character: {
+    Yukari: {
+      path: "character/yukari",
+      len: 47
+    },
+    Maki: {
+      path: "character/maki",
+      len: 47
+    }
   },
   Sound: {
     Bgm: {
