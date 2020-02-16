@@ -16,6 +16,7 @@ export default interface AnimationParam {
   /**
    * 初回のみか継続か
    */
-  once: boolean;
-  isReady: boolean;
+  once?: boolean;
+  isReady?: boolean;
+  instance?: any;
 }
