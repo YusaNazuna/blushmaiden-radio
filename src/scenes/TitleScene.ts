@@ -3,7 +3,7 @@ import GameManager from "managers/GameManager";
 import Scene from "scenes/Scene";
 import Resource from "Resource";
 import SoundManager from "managers/SoundManager";
-import LoaderAddParam from "./LoaderAddParam";
+import LoaderAddParam from "../interfaces/LoaderAddParam";
 import Particle from "Particle";
 import IntroScene from "scenes/IntroScene";
 import Fade from "transition/Fade";
@@ -30,7 +30,6 @@ export default class TitleScene extends Scene {
    * 毎フレームの更新処理
    */
   public update(dt: number): void {
-    const instance = GameManager.instance;
     super.update(dt);
     this.particle.update(dt);
   }

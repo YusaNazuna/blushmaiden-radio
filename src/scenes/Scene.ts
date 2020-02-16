@@ -3,7 +3,7 @@ import Transition from "interfaces/Transition";
 import Immediate from "transition/Immediate";
 import Fade from "transition/Fade";
 import GameManager from "managers/GameManager";
-import LoaderAddParam from "./LoaderAddParam";
+import LoaderAddParam from "../interfaces/LoaderAddParam";
 import SoundManager from "managers/SoundManager";
 
 /**

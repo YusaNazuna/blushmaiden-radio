@@ -1,12 +1,11 @@
 import * as PIXI from "pixi.js";
 import GameManager from "managers/GameManager";
 import SoundManager from "managers/SoundManager";
-import LoaderAddParam from "./scenes/LoaderAddParam";
+import LoaderAddParam from "interfaces/LoaderAddParam";
 import AnimationParam from "interfaces/AnimationParam";
 
 export default class Timeline {
   private time: number = 0;
-  private isInit: boolean = false;
   private isStart: boolean = false;
   public timeLineSources1: AnimationParam[] = [];
   public timeLineSources2: AnimationParam[] = [];
@@ -56,7 +55,6 @@ export default class Timeline {
    * 初期化
    */
   public reset(): void {
-    this.isInit = true;
     this.isStart = false;
     this.time = 0;
   }
