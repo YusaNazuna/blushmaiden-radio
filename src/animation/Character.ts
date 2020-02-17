@@ -13,6 +13,7 @@ import GameManager from "managers/GameManager";
 export default class Character extends PIXI.Container {
   protected filepath: string = "character/";
   protected resources = GameManager.instance.game.loader.resources;
+  protected renderer = GameManager.instance.game.renderer;
   protected characterName: string;
   private character!: PIXI.Sprite;
 
@@ -21,13 +22,41 @@ export default class Character extends PIXI.Container {
     this.characterName = name;
   }
 
-  public path(num): string {
+  public path(num: string): string {
     return `${this.filepath}${this.characterName}/${num}.png`;
   }
 
-  public standup(num) {
+  /**
+   * キャラクターを立ち上げ
+   */
+  public standup(num: string, x?: number, y?: number, flip?: boolean): void {
     const texture = this.resources[this.path(num)].texture;
     this.character = new PIXI.Sprite(texture);
+    this.character.anchor.set(0.5);
+    this.character.y = y;
+    if (flip === true) {
+      this.setFlip({ x: 0, y: 1 });
+      this.character.x = this.renderer.width - x;
+    } else {
+      this.character.x = x;
+    }
     this.addChild(this.character);
+  }
+
+  /**
+   * サイズの設定
+   */
+  public setScale(scale: number) {
+    this.character.scale.set(scale);
+  }
+
+  /**
+   * 歪みの設定
+   * - 整数値の奇数 = 反転
+   * - 整数値の偶数 = 通常
+   */
+  public setFlip(params: { x: number; y: number }): void {
+    this.character.skew.x = Math.PI * params.x;
+    this.character.skew.y = Math.PI * params.y;
   }
 }

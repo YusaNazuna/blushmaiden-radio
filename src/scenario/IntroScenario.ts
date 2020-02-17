@@ -22,7 +22,8 @@ export default class IntroScenario extends Scenario {
           method: () => {
             if (Object.keys(this.instance.yukari).length === 0) {
               this.instance.yukari = new Character("yukari");
-              this.instance.yukari.standup("01");
+              this.instance.yukari.standup("01", 600, 350, false);
+              this.instance.yukari.setScale(0.5);
               this.container.addChild(this.instance.yukari);
             }
           }
