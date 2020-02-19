@@ -10,7 +10,7 @@ import GameManager from "managers/GameManager";
  * - アニメーションの場合、開始から終了までは実行し続けるような処理がタイムラインで必要
  * - 終了時にdestroyのような削除処理も必要
  */
-export default class Character extends PIXI.Container {
+class Character extends PIXI.Container {
   protected filepath: string = "character/";
   protected resources = GameManager.instance.game.loader.resources;
   protected renderer = GameManager.instance.game.renderer;
@@ -33,12 +33,10 @@ export default class Character extends PIXI.Container {
     const texture = this.resources[this.path(num)].texture;
     this.character = new PIXI.Sprite(texture);
     this.character.anchor.set(0.5);
+    this.character.x = x;
     this.character.y = y;
     if (flip === true) {
       this.setFlip({ x: 0, y: 1 });
-      this.character.x = this.renderer.width - x;
-    } else {
-      this.character.x = x;
     }
     this.addChild(this.character);
   }
@@ -60,3 +58,5 @@ export default class Character extends PIXI.Container {
     this.character.skew.y = Math.PI * params.y;
   }
 }
+
+export default Character;
