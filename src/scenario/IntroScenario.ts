@@ -20,9 +20,10 @@ export default class IntroScenario extends Scenario {
     };
     this.lists = [
       {
+        // ゆかマキを配置
         ...this.setParam({
-          startFrame: 10,
-          endFrame: 120,
+          startFrame: 1,
+          endFrame: 1,
           method: () => {
             if (Object.keys(this.instance.yukari).length === 0) {
               this.instance.yukari = new Character("yukari");
@@ -40,9 +41,10 @@ export default class IntroScenario extends Scenario {
         })
       },
       {
+        // メッセージウインドウの初期化・表示
         ...this.setParam({
-          startFrame: 20,
-          endFrame: 200,
+          startFrame: 40,
+          endFrame: 40,
           method: () => {
             if (Object.keys(this.instance.windows.system).length !== 0) return;
             this.instance.windows.system = new MessageWindow("system");
@@ -52,9 +54,29 @@ export default class IntroScenario extends Scenario {
               width: 920,
               height: 120,
               radius: 10,
-              visible: false
+              alpha: 0
             });
             this.container.addChild(this.instance.windows.system);
+          }
+        })
+      },
+      {
+        // フェード初期化
+        ...this.setParam({
+          startFrame: 41,
+          endFrame: 41,
+          method: () => {
+            this.instance.windows.system.fadeInit(0.0, 1.0, 0.03);
+          }
+        })
+      },
+      {
+        // フェードイン実行
+        ...this.setParam({
+          startFrame: 48,
+          endFrame: 100,
+          method: () => {
+            this.instance.windows.system.fade();
           }
         })
       }
