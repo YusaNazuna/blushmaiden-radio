@@ -9,6 +9,8 @@ export default class IntroScenario extends Scenario {
   public instance: any;
   private container: PIXI.Container;
   private renderer = GameManager.instance.game.renderer;
+  private width = GameManager.instance.game.renderer.width;
+  private height = GameManager.instance.game.renderer.height;
 
   constructor(container) {
     super();
@@ -27,13 +29,13 @@ export default class IntroScenario extends Scenario {
           method: () => {
             if (Object.keys(this.instance.yukari).length === 0) {
               this.instance.yukari = new Character("yukari");
-              this.instance.yukari.standup("01", 780, 350, false);
+              this.instance.yukari.standup("01", this.width - 180, this.height - 190, false);
               this.instance.yukari.setScale(0.5);
               this.container.addChild(this.instance.yukari);
             }
             if (Object.keys(this.instance.maki).length === 0) {
               this.instance.maki = new Character("maki");
-              this.instance.maki.standup("01", 190, 350, false);
+              this.instance.maki.standup("01", 180, this.height - 190, false);
               this.instance.maki.setScale(0.5);
               this.container.addChild(this.instance.maki);
             }
@@ -49,7 +51,7 @@ export default class IntroScenario extends Scenario {
             if (Object.keys(this.instance.windows.system).length !== 0) return;
             this.instance.windows.system = new MessageWindow("system");
             this.instance.windows.system.ready({
-              x: 20,
+              x: 160,
               y: this.renderer.height - 130,
               width: 920,
               height: 120,

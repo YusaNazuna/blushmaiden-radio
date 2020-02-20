@@ -4,8 +4,8 @@ import IntroScene from "scenes/IntroScene";
 
 window.onload = () => {
   GameManager.start({
-    width: 960,
-    height: 540
+    width: 1280,
+    height: 720
   });
   GameManager.loadScene(new IntroScene());
 
