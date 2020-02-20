@@ -73,10 +73,30 @@ export default class IntroScenario extends Scenario {
       {
         // フェードイン実行
         ...this.setParam({
-          startFrame: 48,
+          startFrame: 50,
           endFrame: 100,
           method: () => {
             this.instance.windows.system.fade();
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 100,
+          endFrame: 100,
+          method: () => {
+            this.instance.windows.system.textInit();
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 101,
+          endFrame: 200,
+          method: () => {
+            this.instance.windows.system.drawText("こんにちは。私がゆかりです。", 30, 60);
           }
         })
       }

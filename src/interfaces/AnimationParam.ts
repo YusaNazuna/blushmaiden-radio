@@ -5,14 +5,21 @@ export default interface AnimationParam {
    * 開始フレーム
    */
   startFrame: number;
+
   /**
    * 終了フレーム
    */
   endFrame: number;
+
   /**
    * 実行処理
    */
   method: any;
+
+  /**
+   * オブジェクト名
+   */
+  name?: string;
   /**
    * 初回のみか継続か
    */

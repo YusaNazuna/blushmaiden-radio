@@ -15,6 +15,7 @@ export default abstract class Scenario {
       startFrame: params.startFrame,
       endFrame: params.endFrame,
       method: params.method,
+      name: params.name,
       once: params.once || false,
       isReady: params.isReady || false,
       instance: params.instance || null
