@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "round-medium";
+  src: url("assets/fonts/rounded-mplus-1c-medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "round-bold";
+  src: url("assets/fonts/rounded-mplus-1c-bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "round-black";
+  src: url("assets/fonts/rounded-mplus-1c-black.ttf") format("truetype");
+}
+
+* {
+  margin: 0px;
+}
+body {
+  margin: 0;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+}

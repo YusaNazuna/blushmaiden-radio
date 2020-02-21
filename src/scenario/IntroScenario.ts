@@ -29,14 +29,14 @@ export default class IntroScenario extends Scenario {
           method: () => {
             if (Object.keys(this.instance.yukari).length === 0) {
               this.instance.yukari = new Character("yukari");
-              this.instance.yukari.standup("01", this.width - 180, this.height - 190, false);
-              this.instance.yukari.setScale(0.5);
+              this.instance.yukari.standup("01", this.width - 180, this.height - 200, false);
+              this.instance.yukari.setScale(0.6);
               this.container.addChild(this.instance.yukari);
             }
             if (Object.keys(this.instance.maki).length === 0) {
               this.instance.maki = new Character("maki");
-              this.instance.maki.standup("01", 180, this.height - 190, false);
-              this.instance.maki.setScale(0.5);
+              this.instance.maki.standup("01", 180, this.height - 220, false);
+              this.instance.maki.setScale(0.6);
               this.container.addChild(this.instance.maki);
             }
           }
@@ -52,7 +52,7 @@ export default class IntroScenario extends Scenario {
             this.instance.windows.system = new MessageWindow("system");
             this.instance.windows.system.ready({
               x: 160,
-              y: this.renderer.height - 130,
+              y: this.renderer.height - 160,
               width: 920,
               height: 120,
               radius: 10,

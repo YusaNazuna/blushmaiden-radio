@@ -113,4 +113,6 @@ www/assets/character/maki/*
 # ts document
 docs/*
 
+*.ttf
+
 !.gitkeep

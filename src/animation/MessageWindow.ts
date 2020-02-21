@@ -79,7 +79,7 @@ class MessageWindow extends PIXI.Container {
 
   public textInit = () => {
     this.textStyle = new PIXI.TextStyle({
-      fontFamily: "Arial",
+      fontFamily: "round-black",
       fontSize: 36,
       fontWeight: "bold",
       fill: "#391332",

@@ -48,7 +48,7 @@ export default class GameManager {
   public static start(params: { width: number; height: number }): void {
     const options = {
       ...params,
-      backgroundColor: 0xeeeeee,
+      backgroundColor: 0xffffff,
       antialias: true
     };
     const game = new PIXI.Application(options);

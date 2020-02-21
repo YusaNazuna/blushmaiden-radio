@@ -21,7 +21,7 @@ export default class TitleScene extends Scene {
     super();
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.transitionIn = new Fade(0, 0.0, 0);
-    this.particle = new Particle(960, 500, 100);
+    this.particle = new Particle(1280, 720, 500);
     this.addChild(this.particle.container);
     this.addChild(this.container);
   }

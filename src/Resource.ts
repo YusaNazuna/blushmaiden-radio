@@ -27,6 +27,10 @@ const Resource = Object.freeze({
         Title: "sound/yukari/title/001_000_恥じらう乙女の.wav"
       }
     }
+  },
+  FontFamily: {
+    Css: "base.css",
+    Default: "round-black"
   }
 });
 
