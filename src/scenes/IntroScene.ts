@@ -21,7 +21,7 @@ export default class IntroScene extends Scene {
   constructor() {
     super();
     this.addChild(this.container);
-    this.transitionIn = new Fade(1.0, 0.0, -0.02);
+    this.transitionIn = new Fade(1.0, 0.0, -0.03);
     this.transitionOut = new Fade(0.0, 1.0, 0.02);
     this.introScenario = new IntroScenario(this.container);
   }
@@ -36,11 +36,6 @@ export default class IntroScene extends Scene {
       this.timeline.endUpdate(dt);
     }
   }
-
-  /**
-   * 次のシーンへの遷移
-   */
-  public nextScene(): void {}
 
   /**
    * シーン描画
@@ -65,4 +60,9 @@ export default class IntroScene extends Scene {
     }
     return assets;
   }
+
+  /**
+   * 次のシーンへの遷移
+   */
+  public nextScene(): void {}
 }

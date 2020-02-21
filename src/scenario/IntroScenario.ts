@@ -1,6 +1,4 @@
 import GameManager from "managers/GameManager";
-import AnimationParam from "interfaces/AnimationParam";
-import IntroScene from "scenes/IntroScene";
 import Character from "animation/Character";
 import MessageWindow from "animation/MessageWindow";
 import Scenario from "scenario/Scenario";
@@ -29,14 +27,12 @@ export default class IntroScenario extends Scenario {
           method: () => {
             if (Object.keys(this.instance.yukari).length === 0) {
               this.instance.yukari = new Character("yukari");
-              this.instance.yukari.standup("01", this.width - 180, this.height - 200, false);
-              this.instance.yukari.setScale(0.6);
+              this.instance.yukari.initial({ x: this.width - 180, y: this.height - 200, num: "01", scale: 0.6 });
               this.container.addChild(this.instance.yukari);
             }
             if (Object.keys(this.instance.maki).length === 0) {
               this.instance.maki = new Character("maki");
-              this.instance.maki.standup("01", 180, this.height - 220, false);
-              this.instance.maki.setScale(0.6);
+              this.instance.maki.initial({ x: 180, y: this.height - 220, num: "01", scale: 0.6 });
               this.container.addChild(this.instance.maki);
             }
           }
@@ -96,9 +92,43 @@ export default class IntroScenario extends Scenario {
         // テキスト初期化
         ...this.setParam({
           startFrame: 101,
-          endFrame: 200,
+          endFrame: 180,
           method: () => {
-            this.instance.windows.system.drawText("こんにちは。私がゆかりです。", 30, 60);
+            this.instance.yukari.setCharacter("02");
+            this.instance.windows.system.drawText("こんにちは。結月ゆかりです。", 30, 60);
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 200,
+          endFrame: 300,
+          method: () => {
+            this.instance.yukari.setCharacter("06");
+            this.instance.windows.system.drawText("始まりました。「はじおと」第４回目です。", 30, 60);
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 300,
+          endFrame: 400,
+          method: () => {
+            this.instance.yukari.setCharacter("07");
+            this.instance.windows.system.drawText("恥じらう乙女という題名ですけれど、", 30, 60);
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 401,
+          endFrame: 500,
+          method: () => {
+            this.instance.yukari.setCharacter("09");
+            this.instance.windows.system.drawText("恥じらわずにやっていきたいですね (・×・)", 30, 60);
           }
         })
       }
