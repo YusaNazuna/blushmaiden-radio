@@ -7,6 +7,7 @@ interface characterParams {
   num: string;
   scale?: number;
   flip?: boolean;
+  alpha?: number;
 }
 
 /**
@@ -73,6 +74,14 @@ class Character extends PIXI.Container {
   public setScale(scale: number): void {
     this.params.scale = scale;
     this.character.scale.set(scale);
+  }
+
+  /**
+   * 透過の設定
+   */
+  public setAlpha(alpha: number): void {
+    this.params.alpha = alpha;
+    this.character.alpha = alpha;
   }
 
   /**

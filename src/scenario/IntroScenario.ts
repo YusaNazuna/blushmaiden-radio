@@ -46,7 +46,7 @@ export default class IntroScenario extends Scenario {
           method: () => {
             if (Object.keys(this.instance.windows.system).length !== 0) return;
             this.instance.windows.system = new MessageWindow("system");
-            this.instance.windows.system.ready({
+            this.instance.windows.system.initial({
               x: 160,
               y: this.renderer.height - 160,
               width: 920,
@@ -62,27 +62,17 @@ export default class IntroScenario extends Scenario {
         // フェード初期化
         ...this.setParam({
           startFrame: 41,
-          endFrame: 41,
+          endFrame: 80,
           method: () => {
-            this.instance.windows.system.fadeInit(0.0, 1.0, 0.03);
-          }
-        })
-      },
-      {
-        // フェードイン実行
-        ...this.setParam({
-          startFrame: 50,
-          endFrame: 100,
-          method: () => {
-            this.instance.windows.system.fade();
+            this.instance.windows.system.fadeWindow(0.0, 1.0, 0.03);
           }
         })
       },
       {
         // テキスト初期化
         ...this.setParam({
-          startFrame: 100,
-          endFrame: 100,
+          startFrame: 81,
+          endFrame: 81,
           method: () => {
             this.instance.windows.system.textInit();
           }
@@ -91,11 +81,11 @@ export default class IntroScenario extends Scenario {
       {
         // テキスト初期化
         ...this.setParam({
-          startFrame: 101,
+          startFrame: 82,
           endFrame: 180,
           method: () => {
             this.instance.yukari.setCharacter("02");
-            this.instance.windows.system.drawText("こんにちは。結月ゆかりです。", 30, 60);
+            this.instance.windows.system.drawOneLine("こんにちは。結月ゆかりです。");
           }
         })
       },
@@ -106,7 +96,7 @@ export default class IntroScenario extends Scenario {
           endFrame: 300,
           method: () => {
             this.instance.yukari.setCharacter("06");
-            this.instance.windows.system.drawText("始まりました。「はじおと」第４回目です。", 30, 60);
+            this.instance.windows.system.drawOneLine("始まりました。「はじおと」第４回目です。");
           }
         })
       },
@@ -117,7 +107,7 @@ export default class IntroScenario extends Scenario {
           endFrame: 400,
           method: () => {
             this.instance.yukari.setCharacter("07");
-            this.instance.windows.system.drawText("恥じらう乙女という題名ですけれど、", 30, 60);
+            this.instance.windows.system.drawOneLine("恥じらう乙女という題名ですけれど、");
           }
         })
       },
@@ -128,7 +118,7 @@ export default class IntroScenario extends Scenario {
           endFrame: 500,
           method: () => {
             this.instance.yukari.setCharacter("09");
-            this.instance.windows.system.drawText("恥じらわずにやっていきたいですね (・×・)", 30, 60);
+            this.instance.windows.system.drawOneLine("恥じらわずにやっていきたいですね (・×・)");
           }
         })
       }

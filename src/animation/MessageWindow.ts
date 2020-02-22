@@ -32,43 +32,49 @@ class MessageWindow extends PIXI.Container {
     this.windowName = windowName;
   }
 
+  public update(): void {}
+
   /**
-   * ウインドウの立ち上げ
+   * ウインドウの初期設定
    */
-  public ready(params: graphicsParams): void {
+  public initial(params: graphicsParams): void {
     this.params = params;
-    this.graphics = new PIXI.Graphics();
-    this.drawMessageWindow();
-    this.addChild(this.graphics);
+    this.drawWindow();
   }
 
   /**
    * ウインドウの描画
    */
-  public drawMessageWindow = () => {
+  private drawWindow = () => {
     const { x, y, width, height, radius, alpha } = this.params;
+
+    if (this.graphics) {
+      this.graphics.destroy();
+    }
+
+    this.graphics = new PIXI.Graphics();
+
     switch (this.windowName) {
       case "system":
         this.graphics.lineStyle(6, 0x290e19, 0.9);
-        this.graphics.beginFill(0xfaebff, 0.7);
+        this.graphics.beginFill(0xd0ffda, 0.7);
+        // this.graphics.beginFill(0xfff6d0, 0.7);
         this.graphics.drawRoundedRect(x, y, width, height, radius);
         this.graphics.alpha = alpha;
         this.graphics.endFill;
         break;
     }
+    this.addChild(this.graphics);
   };
 
   /**
-   * フェード初期化
+   * フェード
    */
-  public fadeInit = (alphaFrom: number, alphaTo: number, alphaProgress: number) => {
+  public fadeWindow = (alphaFrom: number, alphaTo: number, alphaProgress: number) => {
     this.alphaFrom = alphaFrom;
     this.alphaTo = alphaTo;
     this.alphaProgress = alphaProgress;
-    this.graphics.alpha = alphaFrom;
-  };
 
-  public fade = () => {
     if (
       (this.alphaTo <= this.alphaFrom && this.graphics.alpha >= this.alphaTo) ||
       (this.alphaTo >= this.alphaFrom && this.graphics.alpha <= this.alphaTo)
@@ -77,13 +83,13 @@ class MessageWindow extends PIXI.Container {
     }
   };
 
-  public textInit = () => {
+  public textInit = (params: { fontSize: number }) => {
     this.textStyle = new PIXI.TextStyle({
       fontFamily: "round-black",
-      fontSize: 36,
       fontWeight: "bold",
-      fill: "#391332",
-      letterSpacing: 0
+      letterSpacing: 0,
+      fontSize: 32,
+      fill: "#391332"
     });
   };
 
@@ -97,8 +103,15 @@ class MessageWindow extends PIXI.Container {
     this.text = new PIXI.Text(text, this.textStyle);
     this.text.x = this.params.x + inX;
     this.text.y = this.params.y + inY;
-    this.text.anchor.y = 0.5;
     this.addChild(this.text);
+  };
+
+  public drawOneLine = (text: string) => {
+    this.drawText(text, 30, 35);
+  };
+
+  public drawTwoLine = (text: string) => {
+    this.drawText(text, 30, 15);
   };
 
   /**
