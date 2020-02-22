@@ -26,7 +26,7 @@ export default class Timeline {
     const source = this.timeLineSources1.filter(source => this.time === source.startFrame);
 
     if (source.length > 0) {
-      source[0].method();
+      source[0].method(dt);
       if (!source[0].once) {
         this.continueSouces.push(source[0]);
       }
@@ -39,7 +39,7 @@ export default class Timeline {
     this.continueSouces
       .filter(source => this.time <= source.endFrame)
       .map(source => {
-        source.method();
+        source.method(dt);
       });
   }
 

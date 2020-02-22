@@ -26,10 +26,11 @@ class Character extends PIXI.Container {
   protected characterName: string;
   private character!: PIXI.Sprite;
   private params: characterParams;
-
+  private delta: { ukiuki: number; awawa: number };
   constructor(name) {
     super();
     this.characterName = name;
+    this.delta = { ukiuki: 0, awawa: 0 };
   }
 
   public update(): void {}
@@ -100,6 +101,25 @@ class Character extends PIXI.Container {
   public setFlip(params: { x: number; y: number }): void {
     this.character.skew.x = Math.PI * params.x;
     this.character.skew.y = Math.PI * params.y;
+  }
+
+  /**
+   * ウキウキ
+   */
+  public motionUkiUki(dt: number, level: number): void {
+    const { y, scale } = this.params;
+    this.character.y = y + Math.sin(this.delta.ukiuki) * level;
+    this.character.scale = new PIXI.Point(scale + Math.sin(this.delta.ukiuki) * 0.02, scale);
+    this.delta.ukiuki += dt;
+  }
+
+  /**
+   * あわわ
+   */
+  public motionAwawa(dt: number, level: number): void {
+    const { x } = this.params;
+    this.character.x = x + Math.sin(this.delta.awawa) * level;
+    this.delta.awawa += dt;
   }
 }
 

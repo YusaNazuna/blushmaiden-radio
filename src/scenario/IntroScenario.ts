@@ -39,6 +39,17 @@ export default class IntroScenario extends Scenario {
         })
       },
       {
+        // フェード初期化
+        ...this.setParam({
+          startFrame: 2,
+          endFrame: 1000,
+          method: dt => {
+            this.instance.yukari.motionUkiUki(0.1, 10);
+            this.instance.maki.motionAwawa(0.6, 20);
+          }
+        })
+      },
+      {
         // メッセージウインドウの初期化・表示
         ...this.setParam({
           startFrame: 40,
@@ -75,6 +86,7 @@ export default class IntroScenario extends Scenario {
           endFrame: 81,
           method: () => {
             this.instance.windows.system.textInit();
+            this.instance.yukari.setCharacter("02");
           }
         })
       },
@@ -83,8 +95,7 @@ export default class IntroScenario extends Scenario {
         ...this.setParam({
           startFrame: 82,
           endFrame: 180,
-          method: () => {
-            this.instance.yukari.setCharacter("02");
+          method: dt => {
             this.instance.windows.system.drawOneLine("こんにちは。結月ゆかりです。");
           }
         })
@@ -95,8 +106,17 @@ export default class IntroScenario extends Scenario {
           startFrame: 200,
           endFrame: 300,
           method: () => {
-            this.instance.yukari.setCharacter("06");
             this.instance.windows.system.drawOneLine("始まりました。「はじおと」第４回目です。");
+          }
+        })
+      },
+      {
+        // テキスト初期化
+        ...this.setParam({
+          startFrame: 201,
+          endFrame: 201,
+          method: () => {
+            this.instance.yukari.setCharacter("10");
           }
         })
       },
@@ -105,8 +125,7 @@ export default class IntroScenario extends Scenario {
         ...this.setParam({
           startFrame: 300,
           endFrame: 400,
-          method: () => {
-            this.instance.yukari.setCharacter("07");
+          method: dt => {
             this.instance.windows.system.drawOneLine("恥じらう乙女という題名ですけれど、");
           }
         })
@@ -117,7 +136,6 @@ export default class IntroScenario extends Scenario {
           startFrame: 401,
           endFrame: 500,
           method: () => {
-            this.instance.yukari.setCharacter("09");
             this.instance.windows.system.drawOneLine("恥じらわずにやっていきたいですね (・×・)");
           }
         })
