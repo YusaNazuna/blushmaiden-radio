@@ -41,6 +41,15 @@ export default class IntroScene extends Scene {
    * シーン描画
    */
   protected onLoadedRenderer(): void {
+    const renderer = GameManager.instance.game.renderer;
+    const recording = this.resources[Resource.Static.Recording].texture;
+    const sprite = new PIXI.Sprite(recording);
+
+    sprite.width = renderer.width;
+    sprite.height = renderer.height;
+
+    this.container.addChild(sprite);
+
     this.timeline = new Timeline();
     this.introScenario.scenario.map(scenario => {
       this.timeline.timeLineSources1.push(scenario);
@@ -50,7 +59,9 @@ export default class IntroScene extends Scene {
 
   protected createInitialResourceList(): (LoaderAddParam | string)[] {
     let assets = [];
+    const staticResource = Resource.Static;
     const characters = Resource.Character;
+    assets = assets.concat(staticResource.Recording);
     for (let key of Object.keys(characters)) {
       const character = characters[key];
       for (let i = 1; i <= character.len; i++) {

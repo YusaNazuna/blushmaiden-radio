@@ -1,5 +1,6 @@
 import GameManager from "managers/GameManager";
 import Character from "animation/Character";
+import Shape from "animation/Shape";
 import MessageWindow from "animation/MessageWindow";
 import Scenario from "scenario/Scenario";
 
@@ -14,10 +15,18 @@ export default class IntroScenario extends Scenario {
     super();
     this.container = container;
     this.instance = {
+      shape: { yukari: {}, maki: {} },
       yukari: {},
       maki: {},
       windows: { system: {}, yukari: {}, maki: {} }
     };
+
+    this.instance.shape.yukari = new Shape("round");
+    this.instance.shape.maki = new Shape("round");
+    this.instance.yukari = new Character("yukari");
+    this.instance.maki = new Character("maki");
+    this.instance.windows.system = new MessageWindow("system");
+
     this.lists = [
       {
         // ゆかマキを配置
@@ -25,16 +34,28 @@ export default class IntroScenario extends Scenario {
           startFrame: 1,
           endFrame: 1,
           method: () => {
-            if (Object.keys(this.instance.yukari).length === 0) {
-              this.instance.yukari = new Character("yukari");
-              this.instance.yukari.initial({ x: this.width - 180, y: this.height - 200, num: "01", scale: 0.6 });
-              this.container.addChild(this.instance.yukari);
-            }
-            if (Object.keys(this.instance.maki).length === 0) {
-              this.instance.maki = new Character("maki");
-              this.instance.maki.initial({ x: 180, y: this.height - 220, num: "01", scale: 0.6 });
-              this.container.addChild(this.instance.maki);
-            }
+            this.instance.shape.yukari.initial({
+              x: this.width - 70,
+              y: this.height - 100,
+              radius: 300,
+              color: 0xff4180,
+              lColor: 0xff4180,
+              alpha: 1
+            });
+            this.instance.shape.maki.initial({
+              x: 70,
+              y: this.height - 100,
+              radius: 300,
+              color: 0xffdb41,
+              lColor: 0xffdb41,
+              alpha: 1
+            });
+            this.container.addChild(this.instance.shape.yukari);
+            this.container.addChild(this.instance.shape.maki);
+            this.instance.yukari.initial({ x: this.width - 180, y: this.height - 240, num: "01", scale: 0.7 });
+            this.container.addChild(this.instance.yukari);
+            this.instance.maki.initial({ x: 180, y: this.height - 250, num: "01", scale: 0.7 });
+            this.container.addChild(this.instance.maki);
           }
         })
       },
@@ -44,6 +65,7 @@ export default class IntroScenario extends Scenario {
           startFrame: 2,
           endFrame: 1000,
           method: dt => {
+            this.instance.shape.yukari.motionPonyon(0.05, 2);
             this.instance.yukari.motionUkiUki(0.1, 10);
             this.instance.maki.motionAwawa(0.6, 20);
           }
@@ -55,8 +77,6 @@ export default class IntroScenario extends Scenario {
           startFrame: 40,
           endFrame: 40,
           method: () => {
-            if (Object.keys(this.instance.windows.system).length !== 0) return;
-            this.instance.windows.system = new MessageWindow("system");
             this.instance.windows.system.initial({
               x: 160,
               y: this.renderer.height - 160,

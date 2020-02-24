@@ -31,6 +31,7 @@ class Character extends PIXI.Container {
     super();
     this.characterName = name;
     this.delta = { ukiuki: 0, awawa: 0 };
+    this.sortableChildren = true;
   }
 
   public update(): void {}

@@ -6,7 +6,8 @@ import Scene from "scenes/Scene";
  */
 const Resource = Object.freeze({
   Static: {
-    Title: "bg/title.png"
+    Title: "bg/title.png",
+    Recording: "bg/nc184878.jpg"
   },
   Character: {
     Yukari: {

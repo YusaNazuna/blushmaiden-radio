@@ -30,6 +30,7 @@ class MessageWindow extends PIXI.Container {
   constructor(windowName) {
     super();
     this.windowName = windowName;
+    this.sortableChildren = true;
   }
 
   public update(): void {}
